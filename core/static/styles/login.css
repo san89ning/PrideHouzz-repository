@@ -1,0 +1,14 @@
+#login {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.login-btn button,
+.register-link p {
+    font-family: 'Roboto Serif', serif;
+}
+
+.register-link p a {
+    text-decoration: none;
+}

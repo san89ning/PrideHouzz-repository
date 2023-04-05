@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}
+signup
+{% endblock %}
+
+{% block start %}
+{% load crispy_forms_tags %}
+
+<section id="signup" style="padding: 120px 0px 60px 0px;">
+    
+    <!--Form section-->
+    <section id="form-section">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-6 d-flex justify-content-center">
+                    <form class="border border-dark rounded p-4" method="post" action=".">
+                        {% csrf_token %}
+                        {{ form | crispy }}
+                        <div class="col-auto d-flex justify-content-center p-2">
+                            <button type="submit" class="btn btn-primary">Sign up</button>
+                        </div>
+                        <hr>
+                        <div class="login-link">
+                            <p>
+                                Already registered? <a href="{% url 'login' %}">Login</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!------------>
+    
+</section>
+
+    {% include 'core/footer.html' %}
+{% endblock %}

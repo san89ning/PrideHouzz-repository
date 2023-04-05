@@ -1,0 +1,150 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}
+Account
+{% endblock %}
+
+{% block start %}
+{% load crispy_forms_tags %}
+<link rel="stylesheet" href="{% static 'styles/myaccount.css' %}">
+
+<section id="myaccount-section">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 py-3">
+                <div class="welcome-text d-flex justify-content-center">
+                    <h6 class="text-dark">
+                        Welcome back
+                    </h6>
+                </div>
+                <div class="user-name d-flex justify-content-center">
+                    <h3 class="text-dark">{% firstof user.get_full_name user.username %}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 py-2 d-flex justify-content-between">
+                <div class="user-details-title">
+                    <h6 class="text-dark border-bottom border-dark py-1">Account details</h6>
+                </div>
+                <div class="edit-button">
+                    <a href="{% url 'update_profile' %}">
+                        <img class="img-fluid" src="{% static 'images/edit-button.png' %}" alt="Edit Button">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row d-block py-4">
+            <div class="col-12 d-flex">
+                <div class="col-6 pe-4">
+                    <div class="username-label border-bottom">
+                        <h5><label for="">Username</label></h5>
+                    </div>
+                    <div class="username py-2">
+                        <h6>
+                            {{user.username}}
+                        </h6>
+                    </div>
+                </div>
+                <div class="col-6 pe-4">
+                    <div class="profile-image-label border-bottom">
+                        <h5>
+                            <label for="">
+                                Profile Image
+                            </label>
+                        </h5>
+                    </div>
+                    <div class="profile-image">
+                        {{user.profile_image}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 d-flex">
+                <div class="col-6 pe-4">
+                    <div class="firstname-label border-bottom">
+                        <h5><label for="">Firstname</label></h5>
+                    </div>
+                    <div class="firstname py-2">
+                        <h6>
+                            {{user.first_name}}
+                        </h6>
+                    </div>
+                </div>
+                <div class="col-6 pe-4">
+                    <div class="firstname-label border-bottom">
+                        <h5><label for="">Lastname</label></h5>
+                    </div>
+                    <div class="lastname py-2">
+                        <h6>
+                            {{user.last_name}}
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="col-6 pe-4">
+                    <div class="gender-label border-bottom">
+                        <h5>
+                            <label for="">
+                                Gender
+                            </label></h5>
+                    </div>
+                    <div class="gender py-2">
+                        <h6>
+                            {{user.gender}}
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="col-6 pe-4">
+                    <div class="phone-label border-bottom">
+                        <h5><label for="">Phone Number</label></h5>
+                    </div>
+                    <div class="phone-number py-2">
+                        <h6>
+                            {{user.phone_number}}
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="col-6 pe-4">
+                    <div class="email-label border-bottom">
+                        <h5><label for="">Email</label></h5>
+                    </div>
+                    <div class="email py-2">
+                        <h6>
+                            {{email}}
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="col-6 pe-4">
+                 <div class="address-label border-bottom">
+                    <h5><label for="">Address</label></h5>
+                 </div>
+                 <div class="address py-2">
+                    <h6>
+                        {{user.address}}
+                    </h6>
+                 </div> 
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <a class="logout-link text-danger" target="_self" href="{% url 'logout' %}">
+                    Logout
+                </a>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% include 'core/footer.html' %}
+{% endblock %}

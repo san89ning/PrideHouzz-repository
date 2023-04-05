@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}
+Account
+{% endblock %}
+
+{% block start %}
+{% load crispy_forms_tags %}
+
+    <section id="update-section" style="padding: 120px 0px 60px 0px;">
+        <div class="container">
+            <div class="update-form d-flex justify-content-center">
+                <form method='POST' enctype="multipart/form-data">
+                    {%csrf_token%}
+                    {{u_form|crispy}}
+                    {{p_form|crispy}}
+                    <div class="submit-button py-2">
+                        <button class="px-2 btn btn-success" type='submit'>Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+{% include 'core/footer.html' %}
+{% endblock %}

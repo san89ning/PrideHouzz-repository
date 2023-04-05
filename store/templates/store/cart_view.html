@@ -1,0 +1,99 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Cart{% endblock %}
+
+{% block start %}
+<link rel="stylesheet" href="{% static 'styles/cart_view.css' %}">
+
+<section id="cart_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <div class="cart-view-title">
+                    <h3 class="text-dark border-bottom py-1">
+                        CART
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="row d-flex align-items-center px-3 py-2">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 py-2">
+                <div class="add-more-title d-flex justify-content-center">
+                    <h3 class="text-dark">
+                        ADD MORE PRODUCTS?
+                    </h3>
+                </div>
+                <div class="add-more-link d-flex justify-content-center">
+                    <a class="product-link" href="{% url 'product' %}" style="text-decoration: none; color: blue;">CLICK HERE</a>
+                </div>
+            </div>
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12 d-block py-2 border rounded">
+                {% for item in cart %}
+                <div class="row d-flex justify-content-between py-2">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        {% for product in products %}
+                        <div class="product-image">
+                            <img class="img-fluid" src="{{ product.get_thumbnail }}" alt="{{ product.title }}">
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="item-info">
+                            <p>
+                                <b>Title: </b>{{ item.product.title }} <br>
+                                <b>Quantity: </b>{{ item.quantity }} <br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 d-flex justify-content-end">
+                        <div class="item-price">
+                            <b>Price: </b>₹.{{ item.product.price }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex py-2">
+                    <div class="col-auto">
+                        <a class="text-dark" href="{% url 'remove_from_cart' item.product.id %}">
+                            <img class="img-fluid" src="{% static 'images/trash-icon.png' %}" alt="trash-icon">
+                        </a>
+                    </div>
+                    <div class="col-auto d-flex">
+                        <div class="quantity-title">
+                            <h6 class="text-dark">
+                                Qty.
+                            </h6>
+                        </div>
+                        <div class="increase-quantity">
+                            <a class="px-2 text-dark"
+                            href="{% url 'change_quantity' item.product.id %}?action=increase">+</a>
+                        </div>
+                        |
+                        <div class="decrease-quantity">
+                            <a class="px-2 text-dark"
+                                href="{% url 'change_quantity' item.product.id %}?action=decrease">-</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="row d-flex align-items-center justify-content-between border-top py-2">
+                    <div class="col-auto">
+                        <a href="{% url 'checkout' %}">
+                            <button class="btn btn-info">
+                                Checkout
+                            </button>
+                        </a>
+                    </div>
+                    <div class="col-auto">
+                        <div class="total-price">
+                            <strong>Total cost:&nbsp;</strong>₹.{{ cart.get_total_cost }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'core/footer.html' %}
+{% endblock %}

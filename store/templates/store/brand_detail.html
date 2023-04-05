@@ -1,0 +1,122 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load menu %}
+
+{% block title %}
+Product
+{% endblock %}
+
+{% block start %}
+<link rel="stylesheet" href="{% static 'styles/brand_detail.css' %}">
+
+    <section id="brand-section">
+        <div class="container p-0">
+            <div class="row py-3">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-between py-3">
+                        <div class="product-section-title d-flex align-items-center py-2">
+                            <h3 class="text-dark"
+                                style="font-family: 'Roboto Serif', serif; font-weight: bold;">
+                                PRODUCTS
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 d-flex align-items-center justify-content-end">
+                        <div class="sort-button py-2 px-2">
+                            <div class="dropdown">
+                                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false"
+                                    style="font-family: 'Roboto Serif', serif;">
+                                    Category
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    {% for category in category %}
+                                    <li><a class="text-dark px-2" href="{% url 'category_detail' category.slug %}" style="text-decoration: none;">{{category.title}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="sort-button py-2 px-2">
+                            <div class="dropdown">
+                                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false"
+                                    style="font-family: 'Roboto Serif', serif;">
+                                    Brand
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    {% for brand in brand %}
+                                    <li><a class="text-dark px-2" href="{% url 'brand_detail' brand.slug %}" style="text-decoration: none;">{{brand.title}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="sort-button py-2 px-2">
+                            <div class="dropdown">
+                                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false"
+                                    style="font-family: 'Roboto Serif', serif;">
+                                    Size
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    {% for size in size %}
+                                    <li><a class="text-dark px-2" href="{% url 'size_detail' size.slug %}" style="text-decoration: none;">{{size.title}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid px-5 py-3" style="background-color: white;">
+            <div class="row d-flex justify-content-center">
+                <div class="col-auto">
+                    {% for product in products %}
+                    <div class="product-brand-title px-1">
+                        <h3>{{ product.brand.title }}</h3>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row d-flex justify-content-between py-2 g-1">
+                {% for product in products %}
+                <div id="product-item" class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12 p-3 g-1">
+                    <a class="product-link text-dark" href="{% url 'brand_product' product.brand.slug product.slug %}" style="text-decoration: none;">
+                        <div class="product-card d-block rounded p-2" style="background-color: #f2f2f2;">
+                            <div class="product-image d-flex justify-content-center py-2">
+                                <img class="img-fluid" src="{{ product.image.url }}" alt="image of {{ product.title }}">
+                            </div>
+                            <div class="product-title px-1">
+                                {{ product.title }}
+                            </div>
+                            <div class="product-brand-title px-1">
+                                {{ product.brand.title }}
+                            </div>
+                            <div class="product-brand-title px-1">
+                                {{ product.category.title }}
+                            </div>
+                            <div class="product-brand-title px-1">
+                                {{ product.size.title }}
+                            </div>
+                            <div class="product-price px-1">
+                                ₹.&nbsp;{{product.price}}.00
+                            </div>
+                            <div class="product-description px-1">
+                                {{product.description}}
+                            </div>
+                            <div class="add-to-cart-btn d-flex justify-content-end py-1 px-1">
+                                <a href="{% url 'add_to_cart' product.id %}">
+                                    <img class="img-fluid" src="{% static 'images/cart-icon2.png' %}" alt="Cart icon"
+                                        style="width: 16px;">
+                                </a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    {% include 'core/footer.html' %}  
+{% endblock %}
