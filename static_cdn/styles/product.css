@@ -1,0 +1,12 @@
+#products {
+    padding: 120px 0px 60px 0px;
+}
+
+#product-item {
+    font-family: 'Roboto Serif', serif;
+}
+
+#product-item a {
+    text-decoration: none;
+    color: black;
+}

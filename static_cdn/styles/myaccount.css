@@ -1,0 +1,10 @@
+#myaccount-section {
+    padding: 120px 0px 60px 0px;
+}
+
+.welcome-text h6,
+.user-name h3,
+.user-details-title h6,
+.logout-link {
+    font-family: 'Roboto Serif', serif;
+}
