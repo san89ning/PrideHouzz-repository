@@ -195,9 +195,7 @@ Welcome
                     <a class="product-link" href="{% url 'category_product' product.category.slug product.slug %}">
                         <div class="product-card d-block rounded p-2" style="background-color: #f2f2f2;">
                             <div class="product-image d-flex justify-content-center">
-                                {% if product.image %}
-                                <img class="img-fluid" src="{{ product.image.url }}" alt="image of {{ product.title }}">
-                                {% endif %}
+                                <img class="img-fluid" src="{{ product.get_thumbnail }}" alt="image of {{ product.title }}">
                             </div>
                             <div class="product-title px-2">
                                 {{ product.title }}
