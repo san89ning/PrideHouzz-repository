@@ -14,7 +14,7 @@ signup
     <section id="form-section">
         <div class="container">
             <div class="row d-flex justify-content-center">
-                <div class="col-6 d-flex justify-content-center">
+                <div class="col-auto col-sm-12 col-xs-12 d-flex align-items-center justify-content-center">
                     <form class="border border-dark rounded p-4" method="post" action=".">
                         {% csrf_token %}
                         {{ form | crispy }}

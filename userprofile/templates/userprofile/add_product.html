@@ -12,8 +12,8 @@
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-auto">
-                <div class="add_product-section-title">
-                    <h1>
+                <div class="add_product-section-title py-3">
+                    <h1 style="text-transform: uppercase;">
                         {{ title }}
                     </h1>
                 </div>
@@ -22,28 +22,33 @@
         <div class="row d-flex justify-content-center">
             <div class="col-auto">
                 <div class="add_product-form">
-                    <form method="post" action="." enctype="multipart/form-data">
-                        {% csrf_token %}
+                    <div class="card p-3">
+                        <form method="post" action="." enctype="multipart/form-data">
+                            {% csrf_token %}
 
-                        {{ form | crispy }}
+                            {{ form | crispy }}
 
-                        <div class="add_product-buttons">
-                            <div class="row d-flex">
-                                <div class="col-auto p-2">
-                                    <div class="submit-button">
-                                        <button class="p-2 border-0 text-white" style="background-color: teal;">Submit</button>
+                            <div class="add_product-buttons">
+                                <div class="row d-flex">
+                                    <div class="col-auto p-2">
+                                        <div class="submit-button">
+                                            <button class="p-2 border-0 text-white"
+                                                style="background-color: teal;">Submit</button>
+                                        </div>
                                     </div>
-                                </div>
-                                {% if product %}
-                                <div class="col-auto p-2">
-                                    <div class="delete-button p-2">
-                                        <a class="p-2 border-0 text-white" href="{% url 'delete_product' product.id %}" style="background-color: red;">Delete</a>
+                                    {% if product %}
+                                    <div class="col-auto p-2">
+                                        <div class="delete-button p-2">
+                                            <a class="p-2 border-0 text-white"
+                                                href="{% url 'delete_product' product.id %}"
+                                                style="background-color: red;">Delete</a>
+                                        </div>
                                     </div>
+                                    {% endif %}
                                 </div>
-                                {% endif %}
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

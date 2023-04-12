@@ -118,9 +118,11 @@ def success(request):
 @login_required
 def cart_view(request):
     cart = Cart(request)
+    product = Product.objects.filter(status=Product.ACTIVE)
 
     return render(request, 'store/cart_view.html', {
-        'cart': cart
+        'cart': cart,
+        'product': product,
     })
 
 @login_required
