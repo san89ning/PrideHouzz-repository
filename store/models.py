@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.core.files import File
 from io import BytesIO
 from PIL import Image
+from userprofile.models import Userprofile
 
 # Create your models here.
 class Category(models.Model):
@@ -111,8 +112,21 @@ class Order(models.Model):
     created_by = models.ForeignKey(User, related_name='orders', on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        verbose_name_plural = 'Orders'
+    
+    def __str__(self):
+        return self.user
+
+
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
     product = models.ForeignKey(Product, related_name='items', on_delete=models.CASCADE)
     price = models.IntegerField()
     quantity = models.IntegerField(default=1)
+
+    class Meta:
+        verbose_name_plural = 'OrderItems'
+    
+    def __str__(self):
+        return self.order

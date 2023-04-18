@@ -51,109 +51,113 @@ Construction
     </div>
 
     <div class="container">
-        <div class="row w-100">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 d-block">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="row py-2">
+                    <div class="col-12 d-block">
+                        <div class="title">
+                            <span>
+                                <h5>Area</h5>
+                            </span>
+                        </div>
+                        <div class="value d-flex align-items-centervalue border border-secondary px-2">
+                            <span>
+                                {% if area %}
+                                {{area}} sq. ft.
+                                {% else %}
+                                0 sq. ft.
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-12">
+                        <div class="title">
+                            <span>
+                                <h5>Iron</h5>
+                            </span>
+                        </div>
+                        <div class="value d-flex align-items-center border border-secondary px-2">
+                            <span>
+                                {% if area %}
+                                ₹. {{iron}}
+                                {% else %}
+                                ₹. 0
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-12">
+                        <div class="title">
+                            <span>
+                                <h5>Roofing Sheet</h5>
+                            </span>
+                        </div>
+                        <div class="value d-flex align-items-center border border-secondary px-2">
+                            <span>
+                                {% if area%}
+                                ₹. {{roofing_sheet}}
+                                {% else %}
+                                ₹. 0
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-12">
+                        <div class="title">
+                            <span>
+                                <h5>Worker Wages</h5>
+                            </span>
+                        </div>
+                        <div class="value d-flex align-items-center border border-secondary px-2">
+                            <span>
+                                {% if area %}
+                                ₹. {{wages}}
+                                {% else %}
+                                ₹. 0
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row py-3">
+                    <div class="col-12 d-flex justify-content-end">
+                        <div class="total-title d-flex align-items-center">
+                            <span>
+                                <h5>Total Eastimated Cost:&nbsp;</h5>
+                            </span>
+                        </div>
+                        <div class="total-value d-flex align-items-center">
+                            <span>
+                                <h4>
+                                    {% if area %}
+                                    ₹. {{total}}
+                                    {% else %}
+                                    ₹. 0
+                                    {% endif %}
+                                </h4>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="message d-block py-2">
                     <span>
-                        <p class="text-danger"> <small>* The actual cost may be different from the calculated price
+                        <p class="text-danger"> <small>* The actual cost may be different from the
+                                calculated price
                                 displayed
                                 below.</small></p>
                     </span>
                     <span>
-                        <p class="text-danger"><small>* For actual cost please contact our customer service.</small></p>
+                        <p class="text-danger"><small>* For actual cost please contact our customer
+                                service.</small></p>
                     </span>
-                </div>
-                <div class="constrution-area d-block">
-                    <div class="row w-100 py-2">
-                        <div class="col-6">
-                            <div class="title">
-                                <span>
-                                    <h5>Area</h5>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-6 d-flex align-items-center border border-secondary">
-                            <div class="value">
-                                <span>
-                                    {% if area %}
-                                    {{area}} sq. ft.
-                                    {% endif %}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row w-100 py-2">
-                        <div class="col-6">
-                            <div class="title">
-                                <span>
-                                    <h5>Iron</h5>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-6 d-flex align-items-center border border-secondary">
-                            <div class="value">
-                                <span>
-                                    {% if area %}
-                                    ₹. {{iron}}
-                                    {% endif %}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row w-100 py-2">
-                        <div class="col-6">
-                            <div class="title">
-                                <span>
-                                    <h5>Roofing Sheet</h5>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-6 d-flex align-items-center border border-secondary">
-                            <div class="value">
-                                <span>
-                                    {% if area%}
-                                    ₹. {{roofing_sheet}}
-                                    {% endif %}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row w-100 py-2">
-                        <div class="col-6">
-                            <div class="title">
-                                <span>
-                                    <h5>Worker Wages</h5>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-6 d-flex align-items-center border border-secondary">
-                            <div class="value">
-                                <span>
-                                    {% if area %}
-                                    ₹. {{wages}}
-                                    {% endif %}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row w-100 py-3">
-                        <div class="col-12 d-flex justify-content-end">
-                            <div class="total-title d-flex align-items-center">
-                                <span>
-                                    <h5>Total Eastimated Cost:&nbsp;</h5>
-                                </span>
-                            </div>
-                            <div class="total-value d-flex align-items-center">
-                                <span>
-                                    <h4>
-                                        {% if area %}
-                                        ₹. {{total}}
-                                        {% endif %}
-                                    </h4>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

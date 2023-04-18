@@ -7,20 +7,25 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib import messages
+from store.cart import Cart
 
 # Create your views here.
 def home(request):
     products = Product.objects.filter(status = Product.ACTIVE)[0:4]
     category = Category.objects.all()
+    cart = Cart(request)
     return render(request, 'core/home.html', {
         'products': products,
         'category': category,
+        'cart': cart,
     })
 
 def about(request):
     category = Category.objects.all()
+    cart = Cart(request)
     return render(request, 'core/about.html', {
-        'category': category
+        'category': category,
+        'cart': cart,
     })
 
 def product(request):
@@ -28,6 +33,7 @@ def product(request):
     category = Category.objects.all()
     brand = Brand.objects.all()
     size = Size.objects.all()
+    cart = Cart(request)
     
 
     page = request.GET.get('page', 1)
@@ -44,6 +50,7 @@ def product(request):
         'category': category,
         'brand': brand,
         'size': size,
+        'cart': cart,
     })
 
 @login_required
@@ -53,6 +60,7 @@ def construction(request):
     wages = 0
     total = 0
     category = Category.objects.all()
+    cart = Cart(request)
 
     if request.method == 'GET':
         area = request.GET.get('area')
@@ -70,12 +78,15 @@ def construction(request):
             'wages': wages,
             'total': total,
             'category': category,
+            'cart': cart,
             }
 
     return render(request, 'core/construction.html', context)
 
 def contact(request):
     category = Category.objects.all()
+    cart = Cart(request)
+
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -97,7 +108,8 @@ def contact(request):
     form = ContactForm()
     return render(request, "core/contact.html", {
         'form': form,
-        'category': category
+        'category': category,
+        'cart': cart,
     })
 
 def privacy(request):

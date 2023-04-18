@@ -190,37 +190,37 @@ Welcome
         </div>
         <div class="row d-flex justify-content-between g-2">
             {% if products %}
-                {% for product in products %}
-                <div id="product-item" class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12 px-3 py-4 g-1">
-                    <a class="product-link" href="{% url 'category_product' product.category.slug product.slug %}">
-                        <div class="product-card d-block rounded p-2" style="background-color: #f2f2f2;">
-                            <div class="product-image d-flex justify-content-center">
-                                <img class="img-fluid" src="{{ product.get_thumbnail }}" alt="image of {{ product.title }}">
-                            </div>
-                            <div class="product-title px-2">
-                                {{ product.title }}
-                            </div>
-                            <div class="product-brand-title px-2">
-                                {{ product.brand.title }}
-                            </div>
-                            <div class="product-price px-2">
-                                ₹.&nbsp;{{ product.price }}.00
-                            </div>
-                            <div class="product-description px-2">
-                                {{ product.description }}
-                            </div>
-                            <div class="add-to-cart-btn d-flex justify-content-end py-2 px-2">
-                                <a href="{% url 'add_to_cart' product.id %}">
-                                    <img class="img-fluid" src="{% static 'images/add-to-cart.png' %}" alt="Cart icon"
-                                        style="width: 16px;">
-                                </a>
-                            </div>
+            {% for product in products %}
+            <div id="product-item" class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12 px-3 py-4 g-1">
+                <a class="product-link" href="{% url 'category_product' product.category.slug product.slug %}">
+                    <div class="product-card d-block rounded p-2" style="background-color: #f2f2f2;">
+                        <div class="product-image d-flex justify-content-center">
+                            <img class="img-fluid" src="{{ product.image.url }}" alt="image of {{ product.title }}">
                         </div>
-                    </a>
-                </div>
-                {% endfor %}
+                        <div class="product-title">
+                            {{ product.title }}
+                        </div>
+                        <div class="product-brand-title">
+                            {{ product.brand.title }}
+                        </div>
+                        <div class="product-price">
+                            ₹.&nbsp;{{ product.price }}.00
+                        </div>
+                        <div class="product-description">
+                            {{ product.description }}
+                        </div>
+                        <div class="add-to-cart-btn d-flex justify-content-end py-2 px-2">
+                            <a href="{% url 'add_to_cart' product.id %}">
+                                <img class="img-fluid" src="{% static 'images/add-to-cart.png' %}" alt="Cart icon"
+                                    style="width: 16px;">
+                            </a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
             {% else %}
-                <p class="text-center py-5" style="font-family: 'Roboto, Serif', serif;">Products will be updated soon.</p>
+            <p class="text-center py-5" style="font-family: 'Roboto, Serif', serif;">Products will be updated soon.</p>
             {% endif %}
         </div>
     </div>
@@ -296,11 +296,12 @@ Welcome
 <!--Subscribe Section-->
 <section id="subscribe-section" style="background-color: white; margin: 60px 0px;">
     <div class="container p-5">
-        <div class="row d-flex justify-content-between border rounded border-secondary py-5">
+        <div class="row d-flex justify-content-between py-3">
             <div id="subscribe-column" class="col-xl-3 d-flex justify-content-center px-3">
                 <a class="d-flex align-items-center justify-content-center" href="{% url 'return' %}">
                     <div class="subscribe-image p-2">
-                        <img class="img-fluid" src="{% static 'images/product-return.png' %}" alt="" style="width: 48px;">
+                        <img class="img-fluid" src="{% static 'images/product-return.png' %}" alt=""
+                            style="width: 48px;">
                     </div>
                     <div class="subscribe-content d-flex align-items-center p-2">
                         <h5>
@@ -348,7 +349,7 @@ Welcome
     </div>
 </section>
 <!--------------------->
-    
-{% include 'core/footer.html' %}    
+
+{% include 'core/footer.html' %}
 
 {% endblock %}

@@ -15,19 +15,19 @@ Account
         <div class="row">
             <div class="col-12 py-3">
                 <div class="welcome-text d-flex justify-content-center">
-                    <h6 class="text-dark">
-                        Welcome back
-                    </h6>
+                    <h3 class="text-dark">
+                        WELCOME BACK
+                    </h3>
                 </div>
                 <div class="user-name d-flex justify-content-center">
                     <h3 class="text-dark">{% firstof user.get_full_name user.username %}</h3>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row border-bottom">
             <div class="col-12 py-2 d-flex justify-content-between">
                 <div class="user-details-title">
-                    <h6 class="text-dark border-bottom border-dark py-1">Account details</h6>
+                    <h6 class="text-dark border-dark py-1">ACCOUNT DETAILS</h6>
                 </div>
                 <div class="edit-button">
                     <a href="{% url 'update_profile' %}">
@@ -36,109 +36,141 @@ Account
                 </div>
             </div>
         </div>
-        <div class="row d-block py-4">
-            <div class="col-12 d-flex">
-                <div class="col-6 pe-4">
-                    <div class="username-label border-bottom">
-                        <h5><label for="">Username</label></h5>
-                    </div>
-                    <div class="username py-2">
-                        <h6>
-                            {{user.username}}
-                        </h6>
-                    </div>
+        <div id="account-nav" class="row py-3">
+            <div class="d-flex align-items-start">
+                <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <button class="nav-link active mt-2" id="v-pills-home-tab" data-bs-toggle="pill"
+                        data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                        aria-selected="true">Personal</button>
+                    <button class="nav-link mt-2" id="v-pills-profile-tab" data-bs-toggle="pill"
+                        data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
+                        aria-selected="false">Orders</button>
+                    <button class="nav-link mt-2" id="v-pills-messages-tab" data-bs-toggle="pill"
+                        data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages"
+                        aria-selected="false">Messages</button>
+                    <button class="nav-link mt-2" id="v-pills-settings-tab" data-bs-toggle="pill"
+                        data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings"
+                        aria-selected="false">Settings</button>
                 </div>
-                <div class="col-6 pe-4">
-                    <div class="profile-image-label border-bottom">
-                        <h5>
-                            <label for="">
-                                Profile Image
-                            </label>
-                        </h5>
+                <div class="tab-content px-2 w-100" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                        aria-labelledby="v-pills-home-tab">
+                        <div class="row d-block">
+                            <div class="col-12 d-flex p-2">
+                                <div class="row w-100">
+                                    <div class="col-6 pe-4">
+                                        <div class="account-label border-bottom">
+                                            <p><label for="">Username</label></p>
+                                        </div>
+                                        <div class="account-value pt-2">
+                                            <p>
+                                                {{user.username}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 pe-4">
+                                        <div class="account-label border-bottom">
+                                            <p>
+                                                <label for="">
+                                                    Profile Image
+                                                </label>
+                                            </p>
+                                        </div>
+                                        <div class="account-value pt-2">
+                                            {{user.profile_image}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 d-flex p-2">
+                                <div class="row w-100">
+                                    <div class="col-6 pe-4">
+                                        <div class="account-label border-bottom">
+                                            <p><label for="">Firstname</label></p>
+                                        </div>
+                                        <div class="account-value pt-2">
+                                            <p>
+                                                {{user.first_name}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 pe-4">
+                                        <div class="account-label border-bottom">
+                                            <p><label for="">Lastname</label></p>
+                                        </div>
+                                        <div class="account-value pt-2">
+                                            <p>
+                                                {{user.last_name}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 p-2 d-flex">
+                                <div class="row w-100">
+                                    <div class="col-6 pe-4">
+                                        <div class="account-label border-bottom">
+                                            <p>
+                                                <label for="">
+                                                    Gender
+                                                </label>
+                                            </p>
+                                        </div>
+                                        <div class="account-value pt-2">
+                                            <p>
+                                                {{user.gender}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 pe-4">
+                                        <div class="account-label border-bottom">
+                                            <p><label for="">Phone Number</label></p>
+                                        </div>
+                                        <div class="account-value pt-2">
+                                            <small>{{user.phone_number}}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 d-flex p-2">
+                                <div class="row w-100">
+                                    <div class="col-6 pe-4">
+                                        <div class="account-label border-bottom">
+                                            <p><label for="">Email</label></p>
+                                        </div>
+                                        <div class="account-value pt-2">
+                                            <p>
+                                                {{user.email}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 pe-4">
+                                        <div class="account-label border-bottom">
+                                            <p><label for="">Address</label></p>
+                                        </div>
+                                        <div class="account-value pt-2">
+                                            <p>
+                                                {{user.address}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="profile-image">
-                        {{user.profile_image}}
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 d-flex">
-                <div class="col-6 pe-4">
-                    <div class="firstname-label border-bottom">
-                        <h5><label for="">Firstname</label></h5>
-                    </div>
-                    <div class="firstname py-2">
-                        <h6>
-                            {{user.first_name}}
-                        </h6>
-                    </div>
-                </div>
-                <div class="col-6 pe-4">
-                    <div class="firstname-label border-bottom">
-                        <h5><label for="">Lastname</label></h5>
-                    </div>
-                    <div class="lastname py-2">
-                        <h6>
-                            {{user.last_name}}
-                        </h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="col-6 pe-4">
-                    <div class="gender-label border-bottom">
-                        <h5>
-                            <label for="">
-                                Gender
-                            </label></h5>
-                    </div>
-                    <div class="gender py-2">
-                        <h6>
-                            {{user.gender}}
-                        </h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="col-6 pe-4">
-                    <div class="phone-label border-bottom">
-                        <h5><label for="">Phone Number</label></h5>
-                    </div>
-                    <div class="phone-number py-2">
-                        <h6>
-                            {{user.phone_number}}
-                        </h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="col-6 pe-4">
-                    <div class="email-label border-bottom">
-                        <h5><label for="">Email</label></h5>
-                    </div>
-                    <div class="email py-2">
-                        <h6>
-                            {{email}}
-                        </h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="col-6 pe-4">
-                 <div class="address-label border-bottom">
-                    <h5><label for="">Address</label></h5>
-                 </div>
-                 <div class="address py-2">
-                    <h6>
-                        {{user.address}}
-                    </h6>
-                 </div> 
+                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                        aria-labelledby="v-pills-profile-tab">Order history will be updated very soon</div>
+                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
+                        aria-labelledby="v-pills-messages-tab">You don't have any messages right now.</div>
+                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
+                        aria-labelledby="v-pills-settings-tab">Settings will be updated very soon</div>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
                 <a class="logout-link text-danger" target="_self" href="{% url 'logout' %}">
-                    Logout
+                    <button class="btn btn-md btn-danger">Logout</button>
                 </a>
             </div>
         </div>
