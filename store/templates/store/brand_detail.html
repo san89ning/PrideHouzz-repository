@@ -10,48 +10,48 @@ Product
 <link rel="stylesheet" href="{% static 'styles/brand_detail.css' %}">
 
     <section id="brand-section">
-        <div class="container p-0">
-            <div class="row py-3">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-between py-3">
-                        <div class="product-section-title d-flex align-items-center py-2">
-                            <h3 class="text-dark"
-                                style="font-family: 'Roboto Serif', serif; font-weight: bold;">
-                                PRODUCTS
-                            </h3>
-                        </div>
+        <div class="container">
+            <div class="row d-flex justify-content-between py-5">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 d-flex align-items-center">
+                    <div class="product-section-title d-flex align-items-center py-2">
+                        <h3 class="text-dark" style="font-family: 'Roboto, Serif', serif;">
+                            PRODUCTS
+                        </h3>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 d-flex align-items-center justify-content-end">
-                        <div class="category-select px-2">
-                            <select class="py-1" name="category_list" id="category" onchange="location = this.value;" style="width: 100px;">
-                                <option value="none" selected disabled hidden>Category</option>
-                                {% for category in category %}
-                                    <option value="{% url 'category_detail' category.slug %}">
-                                        {{category.title}}
-                                    </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="brand-select px-2">
-                            <select class="py-1" name="brand_list" id="brand" onchange="location = this.value;" style="width: 100px;">
-                                <option value="none" selected disabled hidden>Brand</option>
-                                {% for brand in brand %}
-                                    <option value="{% url 'brand_detail' brand.slug %}">
-                                        {{brand.title}}
-                                    </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="size-select px-2">
-                            <select class="py-1" name="size_list" id="brand" onchange="location = this.value;" style="width: 100px;">
-                                <option value="none" selected disabled hidden>Size</option>
-                                {% for size in size %}
-                                    <option value="{% url 'size_detail' size.slug %}">
-                                        {{size.title}}
-                                    </option>
-                                {% endfor %}
-                            </select>
-                        </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 d-flex align-items-center justify-content-end">
+                    <div class="category-select px-1">
+                        <select class="py-1" name="category_list" id="category" onchange="location = this.value;"
+                            style="width: 100px;">
+                            <option value="none" selected disabled hidden>Category</option>
+                            {% for category in category %}
+                            <option value="{% url 'category_detail' category.slug %}">
+                                {{category.title}}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="brand-select px-1">
+                        <select class="py-1" name="brand_list" id="brand" onchange="location = this.value;"
+                            style="width: 100px;">
+                            <option value="none" selected disabled hidden>Brand</option>
+                            {% for brand in brand %}
+                            <option value="{% url 'brand_detail' brand.slug %}">
+                                {{brand.title}}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="size-select px-1">
+                        <select class="py-1" name="size_list" id="brand" onchange="location = this.value;"
+                            style="width: 100px;">
+                            <option value="none" selected disabled hidden>Size</option>
+                            {% for size in size %}
+                            <option value="{% url 'size_detail' size.slug %}">
+                                {{size.title}}
+                            </option>
+                            {% endfor %}
+                        </select>
                     </div>
                 </div>
             </div>
@@ -79,9 +79,6 @@ Product
                             </div>
                             <div class="product-brand-title px-1">
                                 {{ product.brand.title }}
-                            </div>
-                            <div class="product-brand-title px-1">
-                                {{ product.category.title }}
                             </div>
                             <div class="product-brand-title px-1">
                                 {{ product.size.title }}

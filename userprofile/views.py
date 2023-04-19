@@ -4,7 +4,7 @@ from django.contrib.auth import login
 from .models import Userprofile
 from django.contrib.auth.decorators import login_required
 from store.forms import ProductForm
-from store.models import Product
+from store.models import Product, OrderItem
 from django.utils.text import slugify
 from django.contrib import messages
 from .forms import SignUpForm, ProfileUpdateForm, UserUpdateForm
@@ -86,8 +86,10 @@ def delete_product(request, pk):
 @login_required(login_url='login')
 def myaccount(request):
     user = Userprofile.objects.all().last()
+    orderitem = OrderItem.objects.all()
     return render(request, 'userprofile/myaccount.html', {
         'user': user,
+        'orderitem': orderitem,
     })
 
 def signup(request):

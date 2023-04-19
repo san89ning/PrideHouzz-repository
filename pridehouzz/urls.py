@@ -18,6 +18,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from core.views import home, about, product, contact, construction, privacy, product_return, payment, delivery
+from store.views import category_product
 
 urlpatterns = [
     path('admin/', admin.site.urls),

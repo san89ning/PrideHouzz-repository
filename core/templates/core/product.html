@@ -17,40 +17,46 @@ Product
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 d-flex py-4">
                     <div class="product-title">
                         <span>
-                            <h3 class="text-dark">PRODUCTS</h3>
+                            <h3 class="text-dark">ALL PRODUCTS</h3>
                         </span>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-end">
                     <div class="category-select px-1">
-                        <select class="py-1" name="category_list" id="category" onchange="location = this.value;" style="width: 90px;">
-                            <option value="none" selected disabled hidden>Category</option>
-                            {% for category in category %}
-                                <option value="{% url 'category_detail' category.slug %}">
-                                    {{category.title}}
-                                </option>
-                            {% endfor %}
-                        </select>
+                        <small>
+                            <select class="py-1" name="category_list" id="category" onchange="location = this.value;" style="width: 90px;">
+                                <option value="none" selected disabled hidden>Category</option>
+                                {% for category in category %}
+                                    <option value="{% url 'category_detail' category.slug %}">
+                                        {{category.title}}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </small>
                     </div>
                     <div class="brand-select px-1">
-                        <select class="py-1" name="brand_list" id="brand" onchange="location = this.value;" style="width: 90px;">
-                            <option value="none" selected disabled hidden>Brand</option>
-                            {% for brand in brand %}
-                                <option value="{% url 'brand_detail' brand.slug %}">
-                                    {{brand.title}}
-                                </option>
-                            {% endfor %}
-                        </select>
+                        <small>
+                            <select class="py-1" name="brand_list" id="brand" onchange="location = this.value;" style="width: 90px;">
+                                <option value="none" selected disabled hidden>Brand</option>
+                                {% for brand in brand %}
+                                    <option value="{% url 'brand_detail' brand.slug %}">
+                                        {{brand.title}}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </small>
                     </div>
                     <div class="size-select px-1">
-                        <select class="py-1" name="size_list" id="brand" onchange="location = this.value;" style="width: 90px;">
-                            <option value="none" selected disabled hidden>Size</option>
-                            {% for size in size %}
-                                <option value="{% url 'size_detail' size.slug %}">
-                                    {{size.title}}
-                                </option>
-                            {% endfor %}
-                        </select>
+                        <small>
+                            <select class="py-1" name="size_list" id="brand" onchange="location = this.value;" style="width: 90px;">
+                                <option value="none" selected disabled hidden>Size</option>
+                                {% for size in size %}
+                                    <option value="{% url 'size_detail' size.slug %}">
+                                        {{size.title}}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </small>
                     </div>
                 </div>
             </div>
@@ -58,34 +64,30 @@ Product
         <div class="product-list" style="background-color: white;">
             <div class="container">
                 <div class="row d-flex justify-content-between py-3">
-                {% if product %}
+                {% if products %}
                     {% for product in products %}
-                    <div id="product-item" class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12 p-3 g-1">
+                    <div id="product-item" class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12 px-3 py-4 g-1">
                         <a class="product-link" href="{% url 'category_product' product.category.slug product.slug %}">
                             <div class="product-card d-block rounded p-2" style="background-color: #f2f2f2;">
-                                <div class="product-image d-flex justify-content-center py-2">
-                                    <img class="img-fluid" src="{{ product.image.url }}"
-                                        alt="image of {{ product.title }}">
+                                <div class="product-image d-flex justify-content-center">
+                                    <img class="img-fluid" src="{{ product.image.url }}" alt="image of {{ product.title }}">
                                 </div>
-                                <div class="product-title px-1">
+                                <div class="product-title">
                                     {{ product.title }}
                                 </div>
-                                <div class="product-brand-title px-1">
+                                <div class="product-brand-title">
                                     {{ product.brand.title }}
                                 </div>
-                                <div class="product-brand-title px-1">
-                                    {{ product.size.title }}
+                                <div class="product-price">
+                                    ₹.&nbsp;{{ product.price }}.00
                                 </div>
-                                <div class="product-price px-1">
-                                    ₹.&nbsp;{{product.price}}.00
+                                <div class="product-description">
+                                    {{ product.description }}
                                 </div>
-                                <div class="product-description px-1">
-                                    {{product.description}}
-                                </div>
-                                <div class="add-to-cart-btn d-flex justify-content-end py-1 px-1">
+                                <div class="add-to-cart-btn d-flex justify-content-end py-2 px-2">
                                     <a href="{% url 'add_to_cart' product.id %}">
-                                        <img class="img-fluid" src="{% static 'images/cart-icon2.png' %}"
-                                            alt="Cart icon" style="width: 16px;">
+                                        <img class="img-fluid" src="{% static 'images/add-to-cart.png' %}" alt="Cart icon"
+                                            style="width: 16px;">
                                     </a>
                                 </div>
                             </div>

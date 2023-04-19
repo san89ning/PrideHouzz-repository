@@ -107,6 +107,41 @@
                     top rated product!
                 </p>
             </div>
+            <div class="row d-flex justify-content-between g-2">
+                {% if products %}
+                    {% for product in products %}
+                    <div id="product-item" class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12 px-3 py-4 g-1">
+                        <a class="product-link" href="{% url 'category_product' product.category.slug product.slug %}">
+                            <div class="product-card d-block rounded p-2" style="background-color: #f2f2f2;">
+                                <div class="product-image d-flex justify-content-center">
+                                    <img class="img-fluid" src="{{ product.image.url }}" alt="image of {{ product.title }}">
+                                </div>
+                                <div class="product-title">
+                                    {{ product.title }}
+                                </div>
+                                <div class="product-brand-title">
+                                    {{ product.brand.title }}
+                                </div>
+                                <div class="product-price">
+                                    ₹.&nbsp;{{ product.price }}.00
+                                </div>
+                                <div class="product-description">
+                                    {{ product.description }}
+                                </div>
+                                <div class="add-to-cart-btn d-flex justify-content-end py-2 px-2">
+                                    <a href="{% url 'add_to_cart' product.id %}">
+                                        <img class="img-fluid" src="{% static 'images/add-to-cart.png' %}" alt="Cart icon"
+                                            style="width: 16px;">
+                                    </a>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="text-center py-5" style="font-family: 'Roboto, Serif', serif;">Products will be updated soon.</p>
+                {% endif %}
+            </div>
         </div>
         {% else %}
         <div class="row">

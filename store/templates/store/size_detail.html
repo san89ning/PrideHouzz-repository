@@ -7,6 +7,7 @@ Product
 {% endblock %}
 
 {% block start %}
+<link rel="stylesheet" href="{% static 'styles/size_detail.css' %}">
 
     <section id="size-section" style="padding-top: 120px;">
         <div class="container px-0">
@@ -14,8 +15,7 @@ Product
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-between py-3">
                         <div class="product-section-title d-flex align-items-center py-2">
-                            <h3 class="text-dark"
-                                style="font-family: 'Roboto Serif', serif; font-weight: bold;">
+                            <h3 class="text-dark" style="font-family: 'Roboto, Serif', serif;">
                                 PRODUCTS
                             </h3>
                         </div>
@@ -79,9 +79,6 @@ Product
                                     </div>
                                     <div class="product-size-title px-1">
                                         {{ product.brand.title }}
-                                    </div>
-                                    <div class="product-size-title px-1">
-                                        {{ product.category.title }}
                                     </div>
                                     <div class="product-size-title px-1">
                                         {{ product.size.title }}

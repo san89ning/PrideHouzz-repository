@@ -116,7 +116,7 @@ class Order(models.Model):
         verbose_name_plural = 'Orders'
     
     def __str__(self):
-        return self.user
+        return self.first_name
 
 
 class OrderItem(models.Model):
@@ -128,5 +128,3 @@ class OrderItem(models.Model):
     class Meta:
         verbose_name_plural = 'OrderItems'
     
-    def __str__(self):
-        return self.order

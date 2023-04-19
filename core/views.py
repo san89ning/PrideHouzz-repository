@@ -60,6 +60,8 @@ def construction(request):
     wages = 0
     total = 0
     category = Category.objects.all()
+    brand = Brand.objects.all()
+    size = Size.objects.all()
     cart = Cart(request)
 
     if request.method == 'GET':
@@ -78,6 +80,8 @@ def construction(request):
             'wages': wages,
             'total': total,
             'category': category,
+            'brand': brand,
+            'size': size,
             'cart': cart,
             }
 

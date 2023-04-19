@@ -29,11 +29,6 @@ Account
                 <div class="user-details-title">
                     <h6 class="text-dark border-dark py-1">ACCOUNT DETAILS</h6>
                 </div>
-                <div class="edit-button">
-                    <a href="{% url 'update_profile' %}">
-                        <img class="img-fluid" src="{% static 'images/edit-button.png' %}" alt="Edit Button">
-                    </a>
-                </div>
             </div>
         </div>
         <div id="account-nav" class="row py-3">
@@ -77,7 +72,7 @@ Account
                                             </p>
                                         </div>
                                         <div class="account-value pt-2">
-                                            {{user.profile_image}}
+                                            {{user.profile_image.url}}
                                         </div>
                                     </div>
                                 </div>
@@ -157,9 +152,41 @@ Account
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-end">
+                                <div class="edit-button">
+                                    <a href="{% url 'update_profile' %}">
+                                        <button class="btn btn-md btn-primary">edit</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
-                        aria-labelledby="v-pills-profile-tab">Order history will be updated very soon</div>
+                        aria-labelledby="v-pills-profile-tab">
+                        {% if orderitem %}
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ITEMS</th>
+                                    <th scope="col">AMOUNT</th>
+                                    <th scope="col">QUANTITY</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for orderitem in orderitem %}
+                                <tr>
+                                    <td>{{orderitem.product}}</td>
+                                    <td>₹.&nbsp;{{ orderitem.price }}.00</td>
+                                    <td>{{orderitem.quantity}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        {% else %}
+                        <p>You heven't made any orders yet!</p>
+                        {% endif %}
+                    </div>
                     <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
                         aria-labelledby="v-pills-messages-tab">You don't have any messages right now.</div>
                     <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
