@@ -103,5 +103,5 @@ class OrderItem(models.Model):
         verbose_name_plural = 'OrderItems'
     
     def __str__(self):
-        return self.product
+        return self.product.title
     
