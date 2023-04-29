@@ -153,7 +153,7 @@ def checkout(request):
 
             cart.clear()
 
-            return redirect('myaccount')
+            return render(request, 'store/order_success.html')
     else:
         form = OrderForm()
 

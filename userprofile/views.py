@@ -105,7 +105,7 @@ def signup(request):
             userprofile.save()
             login(request, user)
             
-            return redirect('home')
+            return render(request, 'userprofile/signup_success.html')
     else:
         form = SignUpForm()
 

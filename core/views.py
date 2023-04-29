@@ -55,9 +55,6 @@ def product(request):
 
 @login_required
 def construction(request):
-    iron = 0
-    roofing_sheet = 0
-    wages = 0
     total = 0
     category = Category.objects.all()
     brand = Brand.objects.all()
@@ -66,7 +63,7 @@ def construction(request):
 
     if request.method == 'GET':
         area = request.GET.get('area')
-        
+
         if area:
             iron = int(area) * 2400
             roofing_sheet = int(area) * 1200
@@ -75,9 +72,6 @@ def construction(request):
 
         context = {
             'area': area,
-            'iron': iron,
-            'roofing_sheet': roofing_sheet,
-            'wages': wages,
             'total': total,
             'category': category,
             'brand': brand,

@@ -34,154 +34,98 @@ Construction
     </div>
 
     <div class="container">
-        <div class="row py-2 d-block">
+        <div class="row py-2 d-flex">
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 py-2">
-                <form class="d-block" action="." method="get">
-                    <div class="d-flex">
-                        <div class="area-title"><label for="">Area</label></div>
-                        <div class="text-input ps-2"><input type="text" name="area" required></div>
-                        <div class="unit-title ps-2">sq. ft.</div>
-                    </div>
-                    <!--
-                    <div class="row d-flex justify-content-start py-3">
-                        <div class="col-auto brand-select">
-                            <select name="brand-list" id="brand" style="width: 100px;">
-                                <option value="none" selected disabled hidden>Brand</option>
-                                {% for brand in brand %}
-                                <option value="{% url 'brand_detail' brand.slug %}">
-                                    {{brand.title}}
-                                </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="col-auto size-select">
-                            <select name="size-list" id="size" style="width: 100px;">
-                            <option value="none" selected disabled hidden>Size</option>
-                            {% for size in size %}
-                            <option value="{% url 'size_detail' size.slug %}">
-                                {{size.title}}
-                            </option>
-                            {% endfor %}
-                        </select>
+                <form class="d-block" action="." method="GET">
+                    <div class="row">
+                        <div class="col-6 d-block">
+                            <div class="area-title"><label for="">Area</label></div>
+                            <div class="input-area d-flex">
+                                <div class="text-input"><input type="text" name="area" required></div>
+                                <div class="unit-title ps-2">sq. ft.</div>
+                            </div>
                         </div>
                     </div>
-                    -->
+                    <div class="row d-flex py-2">
+                        <div class="col-4 d-block">
+                            <div class="title">
+                                <span>
+                                    <label for="category-option">Category</label>
+                                </span>
+                            </div>
+                            <div class="value d-flex align-items-center">
+                                <select name="category-option" id="category" class="w-100">
+                                    <option value="title">select</option>
+                                    {% for category in category %}
+                                    <option value="title">{{category.title}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-4 d-block">
+                            <div class="title">
+                                <span>
+                                    <label for="size-option">Size</label>
+                                </span>
+                            </div>
+                            <div class="value d-flex align-items-center">
+                                <select name="size-option" id="size" class="w-100">
+                                    <option value="title">select</option>
+                                    {% for size in size %}
+                                    <option value="title">{{size.title}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-4 d-block">
+                            <div class="title">
+                                <span>
+                                    <label for="brand-option">Brand</label>
+                                </span>
+                            </div>
+                            <div class="value d-flex align-items-center">
+                                <select name="brand-option" id="brand" class="w-100">
+                                    <option value="title">select</option>
+                                    {% for brand in brand %}
+                                    <option value="title">{{brand.title}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     <div class="py-3">
                         <button class="btn btn-md btn-primary text-white">Enter</button>
                     </div>
                 </form>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="row py-2">
-                    <div class="col-12 d-block">
-                        <div class="title">
-                            <span>
-                                <h5>Area</h5>
-                            </span>
-                        </div>
-                        <div class="value d-flex align-items-centervalue border border-secondary px-2">
-                            <span>
-                                {% if area %}
-                                {{area}} sq. ft.
-                                {% else %}
-                                0 sq. ft.
-                                {% endif %}
-                            </span>
-                        </div>
+                <div class="d-flex justify-content-end">
+                    <div class="total-title d-flex align-items-center">
+                        <span>
+                            <h5>Total Eastimated Cost:&nbsp;</h5>
+                        </span>
                     </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-12">
-                        <div class="title">
-                            <span>
-                                <h5>Iron</h5>
-                            </span>
-                        </div>
-                        <div class="value d-flex align-items-center border border-secondary px-2">
-                            <span>
+                    <div class="total-value d-flex align-items-center">
+                        <span>
+                            <h4>
                                 {% if area %}
-                                ₹. {{iron}}
+                                ₹. {{total}}
                                 {% else %}
                                 ₹. 0
                                 {% endif %}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-12">
-                        <div class="title">
-                            <span>
-                                <h5>Roofing Sheet</h5>
-                            </span>
-                        </div>
-                        <div class="value d-flex align-items-center border border-secondary px-2">
-                            <span>
-                                {% if area%}
-                                ₹. {{roofing_sheet}}
-                                {% else %}
-                                ₹. 0
-                                {% endif %}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-12">
-                        <div class="title">
-                            <span>
-                                <h5>Worker Wages</h5>
-                            </span>
-                        </div>
-                        <div class="value d-flex align-items-center border border-secondary px-2">
-                            <span>
-                                {% if area %}
-                                ₹. {{wages}}
-                                {% else %}
-                                ₹. 0
-                                {% endif %}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row py-3">
-                    <div class="col-12 d-flex justify-content-end">
-                        <div class="total-title d-flex align-items-center">
-                            <span>
-                                <h5>Total Eastimated Cost:&nbsp;</h5>
-                            </span>
-                        </div>
-                        <div class="total-value d-flex align-items-center">
-                            <span>
-                                <h4>
-                                    {% if area %}
-                                    ₹. {{total}}
-                                    {% else %}
-                                    ₹. 0
-                                    {% endif %}
-                                </h4>
-                            </span>
-                        </div>
+                            </h4>
+                        </span>
                     </div>
                 </div>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="message d-block py-2">
-                    <span>
-                        <p class="text-danger"> <small>* The actual cost may be different from the
-                                calculated price
-                                displayed
-                                below.</small></p>
-                    </span>
-                    <span>
-                        <p class="text-danger"><small>* For actual cost please contact our customer
-                                service.</small></p>
-                    </span>
+                <div class="important-point">
+                    <small class="text-danger">
+                        *The actual cost may be different from the calculated cost.
+                    </small>
+                </div>
+                <div class="important-point">
+                    <small class="text-danger">
+                        *To know the actual cost please contact our customer service.
+                    </small>
                 </div>
             </div>
         </div>

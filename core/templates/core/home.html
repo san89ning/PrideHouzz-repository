@@ -121,7 +121,7 @@ Welcome
         {% for category in category %}
         <div class="row d-flex justify-content-between py-2 w-100 border-bottom border-dark">
             <div class="col-auto w-100 d-flex pt-2">
-                <a class="text-dark" href="{% url 'product' %}" style="text-decoration: none;">{{category.title}}</a>
+                <a class="text-dark" href="{% url 'category_detail' category.slug %}" style="text-decoration: none;">{{category.title}}</a>
             </div>
         </div>
         {% endfor %}
@@ -194,9 +194,16 @@ Welcome
             <div id="product-item" class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12 px-3 py-4 g-1">
                 <a class="product-link" href="{% url 'category_product' product.category.slug product.slug %}">
                     <div class="product-card d-block rounded p-2" style="background-color: #f2f2f2;">
+                        {% if product.image %}
                         <div class="product-image d-flex justify-content-center">
                             <img class="img-fluid" src="{{ product.image.url }}" alt="image of {{ product.title }}">
                         </div>
+                        {% else %}
+                        <div class="product-image d-flex justify-content-center">
+                            <img class="img-fluid" src="{% static '/images/thumbnail/product-thumbnail.jpg' %}"
+                                alt="image of {{ product.title }}">
+                        </div>
+                        {% endif %}
                         <div class="product-title">
                             {{ product.title }}
                         </div>

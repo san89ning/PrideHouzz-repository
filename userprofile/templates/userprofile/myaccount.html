@@ -72,7 +72,11 @@ Account
                                             </p>
                                         </div>
                                         <div class="account-value pt-2">
-                                            {{user.profile_image.url}}
+                                            {% if user.profile_image %}
+                                                <img class="img-fluid" src="{{user.profile_image.url}}" alt="" style="width: 90px; height: 90px;">
+                                            {% else %}
+                                                <img class="img-fluid" src="{% static '/images/thumbnail/user-thumbnail.jpg' %}" alt="" style="width: 90px; height: 90px;">
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>

@@ -10,7 +10,7 @@ class Userprofile(models.Model):
     last_name = models.CharField(max_length=50, blank=True)
     address = models.CharField(max_length=100, blank=True)
     gender = models.CharField(max_length=10, blank=True)
-    profile_image = models.ImageField(upload_to='uploads/profile_images', blank=True, null=True)
+    profile_image = models.ImageField(upload_to='uploads/profile_images/', blank=True, null=True)
     is_vendor = models.BooleanField(default=False)
 
     def __str__(self):

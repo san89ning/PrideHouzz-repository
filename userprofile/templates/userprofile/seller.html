@@ -47,15 +47,20 @@ My Store
                     </h3>
                 </div>
                 {% if products %}
-                <div class="row d-flex justify-content-between py-5 g-1">
+                <div class="row d-flex justify-content-between py-3">
                     {% for product in products %}
-                    <div id="product-item" class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <div id="product-item" class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12 px-3 py-4">
                         <a class="product-link" href="{% url 'edit_product' product.id %}">
                             <div class="product-card d-block rounded p-2" style="background-color: #e6e6e6;">
-                                <div class="product-image d-flex justify-content-center py-2">
-                                    <img class="img-fluid" src="{{ product.image.url }}"
-                                        alt="image of {{ product.title }}">
-                                </div>
+                                {% if product.image %}
+                                    <div class="product-image d-flex justify-content-center">
+                                        <img class="img-fluid" src="{{ product.image.url }}" alt="image of {{ product.title }}">
+                                    </div>
+                                {% else %}
+                                    <div class="product-image d-flex justify-content-center">
+                                        <img class="img-fluid" src="{% static '/images/thumbnail/product-thumbnail.jpg' %}" alt="image of {{ product.title }}">
+                                    </div>
+                                {% endif %}
                                 <div class="product-details px-2">
                                     <div class="product-brand-title">
                                         <span class="text-dark">{{ product.brand.title }}</span>
