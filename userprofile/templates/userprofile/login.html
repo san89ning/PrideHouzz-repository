@@ -13,10 +13,13 @@ login
 
     <!--Form section-->
     <section id="form-section">
-        <div class="container h-100">
-            <div class="row h-100 d-flex justify-content-center">
-                <div class="col-auto col-sm-12 col-xs-12 d-flex align-items-center justify-content-center">
-                    <form class="border border-dark rounded p-2" method="post" action=".">
+        <div class="container h-100 d-flex align-items-center p-5">
+            <div class="row bg-light rounded d-flex justify-content-center">
+                <div class="col-auto col-sm-12 col-xs-12">
+                    <form class="rounded p-2" method="post" action=".">
+                        <div class="form-title py-3">
+                            <h5 class="text-center">LOGIN</h5>
+                        </div>
                         {% csrf_token %}
                         {{form|crispy}}
                         <div class="col-auto d-flex justify-content-center p-2">
@@ -24,7 +27,7 @@ login
                         </div>
                         <hr>
                         <div class="register-link">
-                            <p>Not yet registered? <a href="{% url 'signup' %}">Register here</a></p>
+                            <small>Not yet registered? <a href="{% url 'signup' %}" style="text-decoration: none;">Register here</a></small>
                         </div>
                     </form>
                 </div>

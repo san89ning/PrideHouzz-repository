@@ -37,17 +37,29 @@
                                 </div>
                             </div>
                             <div id="product-details" class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12 p-3 bg-light">
-                                <div class="product-title">
-                                    <h4>{{product.title}}</h4>
-                                </div>
-                                <div class="product-size-title pb-2">
-                                    <p class="m-0">Size:</p>{{ product.size.title }}
-                                </div>
-                                <div class="product-price pb-2">
-                                    <p class="m-0">Price:</p>₹.&nbsp;{{ product.price }}.00
-                                </div>
-                                <div class="product-description">
-                                    <p class="m-0">Description:</p>{{product.description}}
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="product-title">
+                                            <h4>{{product.title}}</h4>
+                                        </div>
+                                        <div class="product-size-title pb-2">
+                                            <p class="m-0">Size:</p>{{ product.size.title }}
+                                        </div>
+                                        <div class="product-price pb-2">
+                                            <p class="m-0">Price:</p>₹.&nbsp;{{ product.price }}.00
+                                        </div>
+                                        <div class="add-to-cart-btn d-flex py-2">
+                                            <a href="{% url 'add_to_cart' product.id %}">
+                                                <img class="img-fluid" src="{% static 'images/add-to-cart.png' %}" alt="Cart icon"
+                                                    style="width: 16px;">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="product-description">
+                                            <p class="m-0">Description:</p>{{product.description}}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

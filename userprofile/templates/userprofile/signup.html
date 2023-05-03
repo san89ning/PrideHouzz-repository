@@ -9,14 +9,27 @@ signup
 {% block start %}
 <link rel="stylesheet" href="{% static 'styles/signup.css' %}">
 
-<section id="signup" style="padding: 120px 0px 60px 0px;">
+<style>
+    #signup {
+        height: 150%;
+        min-height: 150dvh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+
+<section id="signup">
     
     <!--Form section-->
     <section id="form-section">
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="col-auto col-sm-12 col-xs-12 d-flex align-items-center justify-content-center">
-                    <form class="border border-dark rounded p-4" method="post" action=".">
+                    <form class=" bg-light rounded p-4" method="post" action=".">
+                        <div class="signup-title">
+                            <h5 class="text-center">SIGNUP</h5>
+                        </div>
                         {% csrf_token %}
                         {{ form | crispy }}
                         <div class="col-auto d-flex justify-content-center p-2">
@@ -24,9 +37,9 @@ signup
                         </div>
                         <hr>
                         <div class="login-link">
-                            <p>
-                                Already registered? <a href="{% url 'login' %}">Login</a>
-                            </p>
+                            <small>
+                                Already registered? <a href="{% url 'login' %}" style="text-decoration: none;">Login</a>
+                            </small>
                         </div>
                     </form>
                 </div>

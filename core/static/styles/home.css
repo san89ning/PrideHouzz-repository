@@ -114,12 +114,13 @@
 @media (max-width: 768px) {
     .cover {
         position: relative;
-        height: 70%;
+        height: 70vh;
         min-height: 70dvh;
     }
 
     .carousel-item img {
         height: 70vh;
+        min-height: 70dvh;
     }
 
     #subscribe-column {

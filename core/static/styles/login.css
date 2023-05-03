@@ -1,15 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;300&display=swap');
 
 #login {
-    height: 100vh;
+    height: 120vh;
     display: flex;
     justify-content: center;
 }
 
+#login-title h5 ,
 form {
     font-family: 'Roboto Slab', serif;
-}
-
-.register-link p a {
-    text-decoration: none;
 }
